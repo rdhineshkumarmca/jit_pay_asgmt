@@ -48,4 +48,16 @@ public class UserResource {
         }
     }
 
+    @PutMapping("/user")
+    public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDTO) throws URISyntaxException {
+        log.debug("REST request to save User : {}", userDTO);
+        if(userDTO.getUserId() == null) {
+            throw new BadRequestAlertException("Update User cannot empty userID");
+        } else {
+            UserDto newUser = userService.updateUser(userDTO);
+            return ResponseEntity.created(new URI("/api/user/" + newUser.getId()))
+                    .body(newUser);
+        }
+    }
+
 }
