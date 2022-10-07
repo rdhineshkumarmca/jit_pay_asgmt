@@ -1,0 +1,20 @@
+CREATE TABLE user
+(
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id VARCHAR(255) DEFAULT NULL,
+    email VARCHAR(255) DEFAULT NULL,
+    first_name VARCHAR(255) DEFAULT NULL,
+    second_name VARCHAR(255) DEFAULT NULL,
+    created_date TIMESTAMP,
+    last_modified_date TIMESTAMP DEFAULT NULL
+);
+CREATE TABLE user_location
+(
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id VARCHAR(255) DEFAULT NULL,
+    name VARCHAR(255) DEFAULT NULL,
+    longitude DECIMAL(21,8) DEFAULT NULL,
+    latitude DECIMAL(21,8) DEFAULT NULL,
+    created_date TIMESTAMP,
+    last_modified_date TIMESTAMP DEFAULT NULL
+);
