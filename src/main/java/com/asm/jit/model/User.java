@@ -2,8 +2,8 @@ package com.asm.jit.model;
 
 import lombok.Data;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -33,11 +33,11 @@ public class User implements Serializable {
     @Column(name = "second_name")
     private String secondName;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(name = "created_date", updatable = false)
     private Instant createdOn = Instant.now();
 
-    @LastModifiedDate
+    @UpdateTimestamp
     @Column(name = "last_modified_date")
     private Instant lastModifiedDate = Instant.now();
 }
