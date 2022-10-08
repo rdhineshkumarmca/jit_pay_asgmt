@@ -12,4 +12,6 @@ public interface UserService {
 
     UserDto updateUser(UserDto userDto);
 
+    UserDto getUserWithRecentLocation(String userId);
+
 }

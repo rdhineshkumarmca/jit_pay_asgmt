@@ -60,4 +60,11 @@ public class UserResource {
         }
     }
 
+    @GetMapping("/user/recent/location/{userId}")
+    public ResponseEntity<UserDto> getUserWithRecentLocation(@PathVariable String userId) {
+        log.debug("REST request to get user by userID:{}", userId);
+        UserDto dto = userService.getUserWithRecentLocation(userId);
+        return ResponseEntity.ok().body(dto);
+    }
+
 }
