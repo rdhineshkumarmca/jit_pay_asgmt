@@ -46,11 +46,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto createUser(UserDto userDto) {
-        User user = userMapper.toEntity(userDto);
-        user.setUserId(UUID.randomUUID().toString());
-        user = userRepository.saveAndFlush(user);
-        log.debug("Created Information for User: {}", user);
-        return userMapper.toDto(user);
+        if(!userRepository.findByEmail(userDto.getEmail()).isPresent()) {
+            User user = userMapper.toEntity(userDto);
+            user.setUserId(UUID.randomUUID().toString());
+            user = userRepository.saveAndFlush(user);
+            log.debug("Created Information for User: {}", user);
+            return userMapper.toDto(user);
+        } else {
+            throw new BadRequestAlertException("Requested Email is already present in DB");
+        }
     }
 
     private User findByUserId(String userId) {
