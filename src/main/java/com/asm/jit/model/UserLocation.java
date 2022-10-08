@@ -2,6 +2,8 @@ package com.asm.jit.model;
 
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -36,11 +38,11 @@ public class UserLocation implements Serializable {
     @Column(name = "latitude", precision = 21, scale = 8)
     private BigDecimal latitude;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(name = "created_date", updatable = false)
     private Instant createdOn = Instant.now();
 
-    @LastModifiedDate
+    @UpdateTimestamp
     @Column(name = "last_modified_date")
     private Instant lastModifiedDate = Instant.now();
 }
