@@ -1,9 +1,13 @@
 package com.asm.jit.web.rest;
 
+import com.asm.jit.config.Constants;
 import com.asm.jit.service.UserLocationService;
 import com.asm.jit.service.dto.UserDto;
+import com.asm.jit.service.dto.UserLocationByDateAndTimeReqDto;
+import com.asm.jit.service.dto.UserLocationByDateAndTimeResDto;
 import com.asm.jit.service.dto.UserLocationDto;
 import com.asm.jit.web.rest.errors.BadRequestAlertException;
+import org.apache.commons.validator.GenericValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -48,6 +52,17 @@ public class UserLocationResource {
             UserLocationDto newUser = userLocationService.createUserLocation(userLocationDto);
             return ResponseEntity.created(new URI("/api/user/location/" + newUser.getId()))
                     .body(newUser);
+        }
+    }
+
+    @PostMapping("/user/location/search")
+    public ResponseEntity<UserLocationByDateAndTimeResDto> getUserLocationByDateAndTime(@Valid @RequestBody UserLocationByDateAndTimeReqDto dto) {
+        log.debug("REST request to getUserLocationByDateAndTime : {}", dto);
+        if(GenericValidator.isDate(dto.getFromDate(), Constants.DEFAULT_DATE_TIME, true) &&
+                GenericValidator.isDate(dto.getToDate(),Constants.DEFAULT_DATE_TIME, true)) {
+            return ResponseEntity.ok().body(userLocationService.getUserLocationByDateAndTime(dto));
+        }else {
+            throw new BadRequestAlertException("Please request with " + Constants.DEFAULT_DATE_TIME + " format");
         }
     }
 }
