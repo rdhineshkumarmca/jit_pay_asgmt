@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "5536b60a-de71-4092-8ace-5230d9abb6dc",
+		"name": "Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23758396"
+	},
+	"item": [
+		{
+			"name": "User By ID - /api/user/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/user/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User - /api/user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"rdhineshkumarmca@gmail.com\",\r\n    \"firstName\" : \"Dhinesh\",\r\n    \"secondName\" : \"Rajendran\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User - /api/user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"c3025a56-15db-4650-b4d8-5aa8a4ff6ae\",\r\n    \"firstName\" : \"Dhinesh kumar\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserLocation By ID - /api/user/location/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/user/location/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"location",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User Location - /api/user/location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"14bae446-9ec4-41b3-b0e5-49f75575cd44\",\r\n    \"name\" : \"Eicklingen, Samtgemeinde Flotwedel, Landkreis Celle, Lower Saxony, 29358, Germany\",\r\n    \"longitude\" : 10.190531,\r\n    \"latitude\": 52.533767\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/user/location",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserWithRecentLocation - /api/user/recent/location/{user_id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/user/recent/location/aebdd7a5-2ba6-4e38-ad75-e72a8518f1cc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"recent",
+						"location",
+						"aebdd7a5-2ba6-4e38-ad75-e72a8518f1cc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserLocationByDateAndTime - /api/user/location/search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"14bae446-9ec4-41b3-b0e5-49f75575cd4\",\r\n    \"fromDate\": \"2022-10-08 09:22:00\",\r\n    \"toDate\": \"2022-10-08 10:23:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/user/location/search",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"location",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
